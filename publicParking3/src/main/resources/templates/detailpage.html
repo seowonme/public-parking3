@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>Plotlist - Listing HTML5 Template</title>
+    <link rel='stylesheet' href='/webjars/bootstrap/4.5.0/css/bootstrap.min.css'>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="/assets/css/templatemo-plot-listing.css">
+    <link rel="stylesheet" href="/assets/css/animated.css">
+    <link rel="stylesheet" href="/assets/css/owl.css">
+
+
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+<!--
+TemplateMo 564 Plot Listing
+https://templatemo.com/tm-564-plot-listing
+-->
+  </head>
+
+<body>
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+
+  <!-- ***** 헤더부분 시작 ***** -->
+  <header th:insert="common/header.html" class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+  </header>
+  <!-- ***** 헤더 부분 끝 ***** -->
+
+
+  <div class="page-heading">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="top-text header-text">
+            <h6>Keep in touch with us</h6>
+            <h2>Parking information</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-page">
+
+
+    <div class="popular-categories">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="section-heading">
+              <h2>사근동 공영주차장</h2>
+              <h6>서울특별시 사근동 11길 33-55</h6>
+            </div>
+          </div>
+          <div class="col-lg-12">
+    <div class="container">
+
+                <div id="map">
+                  <iframe src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="650px" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    <table class="table" style="width: 80%; margin: -50px auto 30px auto"> <!-- 상세 페이지 상세정보 테이블 -->
+        <thead class="thead-light">
+	        <tr class="text-center">
+	            <th scope="col">기본주차요금</th>
+	            <th scope="col">기본주차시간</th>
+	            <th scope="col">추자주차요금</th>
+	            <th scope="col">추가주차시간</th>
+	            <th scope="col">일별 최대요금</th>
+	        </tr>
+        </thead>
+        <tbody>
+        	<tr class="text-center" >
+        		<td th:text="${#strings.equals('가져올값', '무료') ? '무료' : '기본주차요금'}">기본주차요금</td>
+        		<td>기본주차시간</td>
+        		<td>추자주차요금</td>
+        		<td>추가주차시간</td>
+        		<td>최대요금</td>
+        	</tr>
+ <!--        
+	        <tr class="text-center" th:each="post : ${postList}">
+	            <th scope="row">
+	                <span th:text="${post.id}"></span>
+	            </th>
+	            <td>
+	                <a th:href="@{'/post/' + ${post.id}}">
+	                    <span th:text="${post.title}"></span>
+	                </a>
+	            </td>
+	            <td>
+	                <span th:text="${post.nickname}"></span>
+	            </td>
+	            <td>
+	                <span th:text="${#temporals.format(post.createdDate, 'yyyy-MM-dd')}"></span>
+	            </td>
+	            <td>
+	               <span th:text="${post.boardType.value}"></span>
+	            </td>
+	        </tr>
+	         -->
+<!-- 	         <tr>
+	         	<td colspan="5" ></td>  테이블 사이에 간격(빈칸)
+	         </tr> -->
+	 
+    </table>
+    <table class="table" style="width: 80%; margin:0 auto 80px auto">
+        </tbody>
+        <thead class="thead-light">
+	        <tr class="text-center">
+	            <th scope="col">시작시간</th>
+	            <th scope="col">마치는시간</th>
+	            <th scope="col">공휴일 시작시간</th>
+	            <th scope="col">공휴일 마치는시간</th>
+	            <th scope="col">공휴일 무/유료</th>
+	        </tr>
+        </thead>
+        <tbody>
+        	<tr class="text-center">
+        		<td>시작시간</td>
+        		<td>마치는시간</td>
+        		<td>공휴일 시작시간</td>
+        		<td>공휴일 마치는시간</td>
+        		<td>공휴일 무/유료</td>
+        	</tr>
+        </tbody>
+    </table>
+
+
+
+        <!-- 댓글 박스 (댓글수, 댓글리스트, 댓글작성폼) -->
+        <div class="comments" style="width: 80%; margin-left: 10%;">
+            <!-- 댓글수 -->
+            <div class="list_count">
+                <p><span>00</span> 개의 댓글</p>
+            </div>
+            <!-- 댓글 리스트 -->
+            <div class="comment_box">
+                <div class="comment_writer_date_box">
+                    <p class="comment_writer">Nickname</p>
+                    <form>
+                    	<input type="hidden" name="comment_id" value="">
+	                    <button type="submit" class="comment_delete_button">삭제</button>
+                    </form>
+                    <p class="comment_date">2021. 12. 31</p>
+                </div>
+                <p class="comment_content">댓글내용.  댓글내용.  댓글내용.  댓글내용.  <br>
+                    댓글내용.  댓글내용.  <br>
+                    댓글내용.  댓글내용.  댓글내용.  댓글내용.  댓글내용.  댓글내용.  <br>
+                </p>
+            </div>
+            <form th:if="${1}" class="comment_write_form" action="#" method="post">
+                <textarea class="comment_write_content" name="comment" placeholder="댓글을 입력 해 주세요."></textarea>
+                <input type="hidden" name="post_id" th:value="post.id">
+                <input type="submit" class="comment_write_submit" name="comment_content" value="등록">
+            </form>
+            <form th:unless="${1}" class="comment_write_form" action="#" method="post">
+                <textarea class="comment_write_content" name="comment" placeholder="로그인이 필요한 기능입니다." disabled="disabled"></textarea>
+                <input type="hidden" name="post_id" th:value="post.id">
+                <input type="submit" class="comment_write_submit" name="comment_content" value="등록" disabled="disabled">
+            </form>
+        </div>
+<br>
+<br>
+
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="about">
+          <div class="logo">
+            <img src="/assets/images/black-logo.png" alt="Plot Listing Template">
+          </div>
+          <p>If you consider that <a rel="nofollow" href="https://templatemo.com/tm-564-plot-listing" target="_parent">Plot Listing template</a> is useful for your website, please <a rel="nofollow" href="https://www.paypal.me/templatemo" target="_blank">support us</a> a little via PayPal.</p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="helpful-links">
+          <h4>Helpful Links</h4>
+          <div class="row">
+            <div class="col-lg-6">
+              <ul>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">Reviews</a></li>
+                <li><a href="#">Listing</a></li>
+                <li><a href="#">Contact Us</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-6">
+              <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Awards</a></li>
+                <li><a href="#">Useful Sites</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="contact-us">
+          <h4>Contact Us</h4>
+          <p>27th Street of New Town, Digital Villa</p>
+          <div class="row">
+            <div class="col-lg-6">
+              <a href="#">010-020-0340</a>
+            </div>
+            <div class="col-lg-6">
+              <a href="#">090-080-0760</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="sub-footer">
+          <p>Copyright © 2021 Plot Listing Co., Ltd. All Rights Reserved.
+          <br>
+    Design: <a rel="nofollow" href="https://templatemo.com" title="CSS Templates">TemplateMo</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Scripts -->
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/js/owl-carousel.js"></script>
+<script src="/assets/js/animation.js"></script>
+<script src="/assets/js/imagesloaded.js"></script>
+<script src="/assets/js/custom.js"></script>
+
+</body>
+
+</html> 

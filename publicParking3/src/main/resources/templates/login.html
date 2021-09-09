@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- Scripts -->
+    <script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Additional CSS Files -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="/assets/css/loginstyle.css">
+</head>
+
+<body>
+    <div class="container">
+        <form action="/member/user/login" method="post" name="login">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
+            <div class="card card0 border-0">
+                <div class="row d-flex">
+                    <div class="col-lg-6">
+                        <div class="card1 pb-5">
+                            <div class="row">
+                                <img src="/assets/images/white-logo.png" class="logo">
+                            </div>
+                            <div class="row px-3 justify-content-center mt-4 mb-5 border-line">
+                                <img src="/assets/images/parking.jpg" class="image">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card2 card border-0 px-4 py-5">
+                            <div class="row mb-4 px-3">
+                                <h6 class="mb-0 mr-4 mt-2">Sign in with</h6>
+                                <div class="kakao text-center mr-3">
+                                    <div><img src="/assets/images/kakaoicon.png" width="25px" onclick="kakaoLogin();">
+                                        <a href="/javascript:void(0)"></a></div>
+                                </div>
+                            </div>
+                            <div class="row px-3 mb-4">
+                                <div class="line"></div>
+                                <small class="or text-center">Or</small>
+                                <div class="line"></div>
+                            </div>
+                            <!--이메일 아이디 시작-->
+                            <div class="row px-3">
+                                <label for="email" class="mb-1">
+                                    <h6 class="mb-0 text-sm">Email</h6>
+                                </label>
+                                <input class="mb-4" id="email" type="text" name="email" placeholder="Email" maxlength="30">
+                            </div>
+                            <!--이메일 아이디 끝-->
+
+                            <!--패스워드 시작-->
+                            <div class="row px-3">
+                                <label for="password" class="mb-1">
+                                    <h6 class="mb-0 text-sm">Password</h6>
+                                </label>
+                                <input type="password" id="password" name="password" placeholder="Password" maxlength="10">
+                            </div>
+                            <!--패스워드 끝-->
+                            <div class="row px-3 mb-4">
+                                <a href="#" class="ml-auto mb-0 text-sm"></a>
+                            </div>
+                           
+                            <!--로그인 버튼-->
+                            <div class="row mb-3 px-3">
+                                <button type="button" onclick="login_check();" class="btn btn-blue text-center">로그인</button>
+                            </div>
+                            <!-- 로그인 버튼 끝-->
+
+                            <div class="row mb-4 px-3">
+                                <small class="font-weight-bold">Don't have an account?
+                                    <a class="text-danger " href="/member/user/signup">Register</a>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-blue py-4">
+                    <div class="row px-3">
+                        <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2021. All rights reserved.</small>
+                        <div class="social-contact ml-4 ml-sm-auto">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    </div>
+
+
+    <script> 
+    	Kakao.init('beb04cd568bcb1c7ca42d7175c57e30d'); //발급받은 키 중 javascript키를 사용해준다.
+		console.log(Kakao.isInitialized()); // sdk초기화여부판단
+		//카카오로그인
+		function kakaoLogin() {
+		    Kakao.Auth.login({
+		      success: function (response) {
+		        Kakao.API.request({
+		          url: '/v2/user/me',
+		          success: function (response) {
+		        	  console.log(response)
+		          },
+		          fail: function (error) {
+		            console.log(error)
+		          },
+		        })
+		      },
+		      fail: function (error) {
+		        console.log(error)
+		      },
+		    })
+		  }
+        //로그인 유효성 검사
+        function login_check() {
+            var email = document.getElementById("email");
+            var password = document.getElementById("password");
+
+            if(email.value == ""){
+                alert("이메일을 입력하세요.")
+                email.focus();
+                return false;
+            }
+
+            var emailCheck = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+            if (!emailCheck.test(email.value)){
+                alert("이메일 양식을 지켜주세요.")
+                email.focus();
+                return false;
+            }
+
+            if(password.value ==""){
+                alert("비밀번호를 입력하세요.");
+                password.focus();
+                return false;
+            };
+
+            //비밀번호 영문자+숫자+특수조합(4~10자리) 정규식
+            var passwordCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{4,10}$/;
+            if (!passwordCheck.test(password.value)) {
+                alert("잘못된 비밀번호입니다.")
+                password.focus();
+                return false;
+            };
+
+
+            document.login.submit();
+           
+        }
+    </script>
+</body>
+
+</html>

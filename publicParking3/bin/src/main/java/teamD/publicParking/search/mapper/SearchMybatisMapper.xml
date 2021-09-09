@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="teamD.publicParking.search.Repository.SearchMybatisDao">
+
+	<resultMap type="teamD.publicParking.search.Model.SearchEntity" id="searchEntity">
+		<result property="parkingId" column="parking_id" />
+		<result property="parkingName" column="parking_name" />
+		<result property="parkingAddress" column="parking_address" />
+		<result property="parkingPhone" column="parking_phone" />
+		<result property="parkingVehicles" column="parking_vehicles" />
+		<result property="parkingFree" column="parking_free" />
+		<result property="parkingPrice" column="parking_price" />
+	</resultMap>
+
+  	<select id="select" resultMap="searchEntity">
+		SELECT
+		  parking_id
+		, parking_name
+		, parking_address
+		, parking_phone
+		, parking_vehicles
+		, parking_free
+		, parking_price
+	FROM
+	study.seoul_parking parking_id
+	LIMIT 20
+  	</select>
+  	
+	<select id="searchByCondition" resultMap="searchEntity">
+	
+	<!-- SELECT * FROM teamD.seoul_parking WHERE parking_name LIKE '%공영%주차장%' and parking_address like '%마포%' ;  -->
+	
+		SELECT
+		  parking_id
+		, parking_name
+		, parking_address
+		, parking_phone
+		FROM
+		study.seoul_parking
+		<where>
+			<if test="area != null and area != '' ">
+			parking_name like '%${area}%'
+			</if> 
+			<if test="address != null and address != '' ">
+			and parking_address like '%${address}%'
+			</if>
+		</where>
+		
+  	</select>
+</mapper>

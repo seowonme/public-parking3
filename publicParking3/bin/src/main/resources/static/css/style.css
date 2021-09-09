@@ -1,0 +1,340 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+/* 
+body{
+    background-color: #F5F5F5;
+}
+ */
+/*----------------- 메인 컨텐츠 박스 -----------------*/
+.wrapper{
+    width: 720px;
+    /* border: 1px solid #AAAAAA; */
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+/*-----------------  검색바  -----------------*/
+
+.search_wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.search_bar{
+    height: 35px;
+    width: 100%;
+    padding: 12px;
+    border : solid 1px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    background-color: #EFEFEF;
+}
+
+.search_form{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 120px 1fr 70px;
+    grid-column-gap: 10px;
+}
+
+.search_select{
+    border : solid 1px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    padding: 0 5px;
+}
+.search_text{
+    padding-left: 10px;
+    border : solid 1px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+
+.search_submit{
+    background-color: #203B34;
+    border-radius: 5px;
+    color: #FFBC01;
+}
+.search_submit:hover{
+    cursor: pointer;
+    background-color: rgba(32, 59, 52, 0.85);
+}
+
+/*-----------------  리스트 랩퍼 박스  -----------------*/
+.list_wrappers_box{
+    margin-bottom: 30px;
+}
+
+/*-----------------  리스트 박스  -----------------*/
+.list_wrapper{
+    border : solid 1px rgba(0,0,0,0.2);
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+/*-----------------  리스트 내용 (테이블)  -----------------*/
+table {
+    border-collapse: collapse;
+}
+.list_table{
+    width: 100%;
+}
+
+/* 테이블 글씨 정렬 */
+.list_table_category,
+.list_table_content td:first-child,
+.list_table_content td:last-child{
+    text-align: center;
+}
+
+/* 테이블 셀 세로 여백 */
+.list_table_category th,
+.list_table_content td{
+    padding: 7px 0;
+}
+
+/* 테이블 셀 가로넓이 */
+.list_table_category th:first-child{
+    width: 10%;
+}
+.list_table_category th:nth-child(2){
+    width: 75%;
+}
+.list_table_category th:nth-child(3){
+    width: 15%;
+}
+
+/* 테이블 카테고리(thead) 밑줄 */
+.list_table_category{
+    border-bottom: 2px solid rgba(0,0,0,0.3);
+}
+
+/* 테이블 목록(tbody) 밑줄 */
+.list_table_content{
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+/* 번호, 날짜 글씨 */
+.list_table_number,
+.list_table_date{
+    color: rgba(0,0,0,0.5);
+}
+
+/* 제목 글씨 */
+.list_table_title a{
+    font-size: 1.15em;
+    font-weight: bold;
+    color: rgba(32, 59, 52, 1);
+}
+.list_table_title a:hover{
+    color: rgba(32, 59, 52, 0.8);
+    text-decoration: underline;
+}
+
+/*--------------- 주차장, 충전소 테이블 --------------- */
+.list_table_name_adress td:first-child{
+    text-align: left;
+    padding: 7px 0;
+    padding-left: 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.list_table_name_adress a{
+    font-size: 1.15em;
+    font-weight: bold;
+    color: rgba(32, 59, 52, 1);
+}
+.list_table_name_adress a:hover{
+    color: rgba(32, 59, 52, 0.8);
+    text-decoration: underline;
+}
+
+.list_table_adress{
+    display: block;
+    margin-top: 10px;
+}
+/*-----------------  리스트 갯수  -----------------*/
+
+.list_count{
+    width: 100%;
+    margin-top: 40px;
+    margin-left: 10px;
+}
+
+.list_count p,
+.list_count span{
+    color: grey;
+    font-size: 0.95em;
+}
+
+/* 글쓰기 버튼, 페이지네비 위치지정 */
+.new_post_and_nav{
+	display: grid;
+    grid-template-columns: auto 1fr;
+}
+.new_post_button{
+	height: 30px;
+	padding: 0 20px;
+	margin-top: 20px;
+	margin-left: 10px;
+	background: white;
+	border: solid 1px rgba(0,0,0,0.2);
+	border-radius: 5px;
+}
+
+/*-------------------- 게시글 페이지 --------------------*/
+
+/*-------------------- 게시글 박스 --------------------*/
+.post_box{
+    margin: 30px 0;
+}
+
+/* 게시글 작성자, 작성날짜 박스설정 */
+.post_writer_date_box{
+    background-color: rgba(32, 59, 52, 1);
+    padding: 2px 25px;
+    margin: 10px 0;
+    display: grid;
+    grid-template-columns: 1fr 150px;
+}
+
+/* 게시글 작성자, 작성날짜 글씨설정 */
+.post_writer_date_box p{
+    display: inline-block;
+    color: white;
+    font-size: 0.85em;
+    font-weight: bold;
+}
+
+/* 게시글 내용 */
+.post_content{
+    margin: 30px 15px;
+    line-height: 1.5em;
+}
+
+/* 게시글 출처, 조회수 */
+.post_view_count{
+    padding: 10px 15px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    border-bottom: solid 1px rgba(0,0,0,0.2);
+    margin-bottom: 40px;
+}
+.post_view_count p,
+.post_view_count span{
+    color: rgba(0,0,0,0.4);
+    font-size: 0.95em;
+}
+
+/* 댓글갯수 */
+.comments .list_count p,
+.comments .list_count span{
+    color: black;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/*--------------- 댓글리스트 ---------------*/
+.comment_writer_date_box{
+    background-color: rgb(220,220,220);
+    padding: 0 15px;
+    margin: 15px 0;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    grid-column-gap: 10px;
+}
+/* 댓글 작성자, 작성일 */
+.comment_writer_date_box p{
+    font-size: 0.95em;
+    text-align: right;
+}
+
+.comment_delete_button{
+	margin-left: 10px;
+	border: none;
+	padding: 1px 3px;
+	box-sizing: border-box;
+	background: none;
+	border: 1px solid rgba(220,220,220,1);
+	border-radius: 5px;
+	font-size: 0.9em;
+	color: rgba(0,0,0,0.4);
+}
+.comment_delete_button:hover{
+	color: rgba(0,0,0,0.7);
+	border: 1px solid rgba(0,0,0,0.4);
+	transition: 0.15s;
+}
+
+/* 댓글내용 */
+.comment_content{
+    padding: 5px 20px;
+    margin-bottom: 30px;
+    font-size: 0.95em;
+    line-height: 1.5em;
+}
+
+/* 댓글 작성 박스 */
+.comment_write_form{
+    display: grid;
+    grid-template-columns: 1fr 100px;
+    grid-template-rows: 100px 30px;
+    grid-row-gap: 10px;
+}
+.comment_write_content{
+    width: 100%;
+    padding: 10px;
+    grid-column: 1/ 3;
+}
+.comment_write_submit{
+    grid-column:  2/ 3;
+    grid-row: 2 / 3;
+    background-color: rgba(32, 59, 52, 1);
+    color: #FFBC01;
+}
+.comment_write_submit:hover{
+    cursor: pointer;
+    background-color: rgba(32, 59, 52, 0.85);
+}
+
+
+/*--------------- 게시글 작성  ---------------*/
+.new_post{
+    width: 100%;
+    margin-top: 30px;
+}
+
+.post_label{
+    display: inline-block;
+    width: 100%;
+}
+
+/* 새 글 타이틀*/
+.news_title_text_box{
+    width: 100%;
+    margin: 10px 0;
+    padding: 3px 10px;
+    line-height: 1.7em;
+    margin-bottom: 20px;
+}
+
+/* 새글 내용창 */
+.news_write_content{
+    width: 100%;
+    height: 150px;
+    padding: 5px 10px;
+    margin: 10px 0;
+}
+
+.news_write_submit{
+    width: 100px;
+    height: 30px;
+    margin-top: 10px;
+    float: right;
+}

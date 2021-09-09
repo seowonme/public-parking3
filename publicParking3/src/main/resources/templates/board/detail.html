@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="@{'게시판 - ' + ${post.title}}"></title>
+    <link rel='stylesheet' href='/webjars/bootstrap/4.5.0/css/bootstrap.min.css'>
+    
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> 
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="/assets/css/templatemo-plot-listing.css">
+    <link rel="stylesheet" href="/assets/css/animated.css">
+    <link rel="stylesheet" href="/assets/css/owl.css">
+    
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+
+
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** 헤더부분 시작 ***** -->
+  <header th:insert="common/header.html" class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+  </header>
+  <!-- ***** 헤더 부분 끝 ***** -->
+
+
+  <div class="page-heading">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="top-text header-text">
+            <h6>Categories with Simple Tabs</h6>
+            <h2>We have a wide range of business categories for you</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- 
+
+<header th:insert="common/header.html"></header> 
+-->
+<div class="container">
+
+<!-- 
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title" th:text="@{${post.title} + ' - ' + ${post.nickname}}"></h5>
+            <p class="card-text"><small class="text-muted" th:text="${#temporals.format(post.created_at, 'yyyy-MM-dd')}"></small></p>
+            <p class="card-text" th:text="${post.content}"></p>
+        </div>
+    </div>
+
+ -->
+	
+
+        <!-- 본문 박스 (제목, 작성자, 작성날짜, 본문, 조회수)-->
+        <div class="post_box">
+            <h3 class="post_name" th:text="${post.title}"></h3>
+            <div class="post_writer_date_box">
+                <p class="post_writer" th:text="${post.nickname}"></p>
+                <p class="post_date" th:text="${#temporals.format(post.created_at, 'yyyy-MM-dd')}"></p>
+            </div>
+            
+		    
+		    <div class="row mt-3">
+		        <div class="col-auto mr-auto"></div>
+		        <div class="col-auto">
+		            <a class="btn btn-info" th:href="@{'/board/post/edit/' + ${post.board_id}}" role="button">수정</a>
+		        </div>
+		        <div class="col-auto">
+		            <form id="delete-form" th:action="@{'/board/post/' + ${post.board_id}}" method="post">
+		                <input type="hidden" name="_method" value="delete"/>
+		                <button id="delete-btn" type="submit" class="btn btn-danger">삭제</button>
+		            </form>
+		        </div>
+		    </div>
+            
+            
+            <p class="post_content" th:text="${post.content}" ></p>
+        </div>
+
+
+        <!-- 댓글 박스 (댓글수, 댓글리스트, 댓글작성폼) -->
+        <div class="comments">
+            <!-- 댓글수 -->
+            <div class="list_count">
+                <p><span>00</span> 개의 댓글</p>
+            </div>
+            <!-- 댓글 리스트 -->
+            <div class="comment_box">
+                <div class="comment_writer_date_box">
+                    <p class="comment_writer">Nickname</p>
+                    <form>
+                    	<input type="hidden" name="comment_id" value="">
+	                    <button type="submit" class="comment_delete_button">삭제</button>
+                    </form>
+                    <p class="comment_date">2021. 12. 31</p>
+                </div>
+                <p class="comment_content">댓글내용.  댓글내용.  댓글내용.  댓글내용.  <br>
+                    댓글내용.  댓글내용.  <br>
+                    댓글내용.  댓글내용.  댓글내용.  댓글내용.  댓글내용.  댓글내용.  <br>
+                </p>
+            </div>
+            <form th:if="${1}" class="comment_write_form" action="#" method="post">
+                <textarea class="comment_write_content" name="comment" placeholder="댓글을 입력 해 주세요."></textarea>
+                <input type="hidden" name="post_id" th:value="post.id">
+                <input type="submit" class="comment_write_submit" name="comment_content" value="등록">
+            </form>
+            <form th:unless="${1}" class="comment_write_form" action="#" method="post">
+                <textarea class="comment_write_content" name="comment" placeholder="로그인이 필요한 기능입니다." disabled="disabled"></textarea>
+                <input type="hidden" name="post_id" th:value="post.id">
+                <input type="submit" class="comment_write_submit" name="comment_content" value="등록" disabled="disabled">
+            </form>
+        </div>
+</div>
+
+
+  <footer style="margin-top: 50px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="about">
+            <div class="logo">
+              <img src="/assets/images/black-logo.png" alt="Plot Listing">
+            </div>
+            <p>부릉부릉은 <a rel="nofollow" href="https://templatemo.com/tm-564-plot-listing" target="_parent">공영주차장과 전기차 충전소</a> 정보를 제공하는<br> 사이트입니다. <a rel="nofollow" href="https://www.paypal.me/templatemo" target="_blank"> 이용해주셔서</a> 감사합니다.</p>
+          </div>
+        </div>
+       
+        <div class="col-lg-4">
+          <div class="contact-us">
+            <h4>Contact Us</h4>
+            <p>smile333@gmail.com</p>
+            <div class="row">
+              <div class="col-lg-6">
+                <a href="#">010-020-0340</a>
+              </div>
+              <div class="col-lg-6">
+                <a href="#">090-080-0760</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="sub-footer">
+            <p>Copyright © 2021 Plot Listing Co., Ltd. All Rights Reserved.
+            <br>
+			Design: <a rel="nofollow" href="https://templatemo.com" title="CSS Templates">TemplateMo</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+    
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var boardDto = /*[[${boardDto}]]*/ "";
+    /*]]>*/
+</script>
+
+  <!-- Scripts -->
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/owl-carousel.js"></script>
+  <script src="/assets/js/animation.js"></script>
+  <script src="/assets/js/imagesloaded.js"></script>
+  <script src="/assets/js/custom.js"></script>
+  
+
+<script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script th:inline="javascript" th:src="@{/js/board.js}"></script>
+</body>
+</html>

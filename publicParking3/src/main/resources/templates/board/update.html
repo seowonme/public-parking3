@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    
+    <link rel='stylesheet' href='/webjars/bootstrap/4.5.0/css/bootstrap.min.css'>
+    
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="/assets/css/templatemo-plot-listing.css">
+    <link rel="stylesheet" href="/assets/css/animated.css">
+    <link rel="stylesheet" href="/assets/css/owl.css">
+</head>
+<body>
+
+
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** 헤더부분 시작 ***** -->
+  <header th:insert="common/header.html" class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+  </header>
+  <!-- ***** 헤더 부분 끝 ***** -->
+
+  <div class="page-heading">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="top-text header-text">
+            <h6>Categories with Simple Tabs</h6>
+            <h2>We have a wide range of business categories for you</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container" style="margin-top: 50px;">
+	<form th:action="@{'/board/post/edit/' + ${post.board_id}}" method="post">
+	    <input type="hidden" name="_method" value="put"/>
+	    <input type="hidden" name="board_id" th:value="${post.board_id}"/>
+	
+        <div class="form-group row">
+            <label for="inputTitle" class="col-sm-2 col-form-label"><strong>제목</strong></label>
+            <div class="col-sm-10">
+                <input type="text" name="title" class="form-control" id="inputTitle" th:value="${post.title}">
+            </div>
+        </div>
+	    
+        <div class="form-group row">
+            <label for="inputNickname" class="col-sm-2 col-form-label"><strong>작성자</strong></label>
+            <div class="col-sm-10">
+                <input type="text" name="nickname" class="form-control" id="inputNickname" th:value="${post.nickname}">
+            </div>
+        </div>
+        
+        <div class="form-group row">
+            <label for="inputContent" class="col-sm-2 col-form-label"><strong>내용</strong></label>
+            <div class="col-sm-10">
+                <textarea type="text" name="content" class="form-control" id="inputContent" style="height:200px" th:text="${post.content}"></textarea>
+            </div>
+        </div>
+	
+        <div class="row">
+            <div class="col-auto mr-auto"></div>
+            <div class="col-auto">
+                <input class="btn btn-primary" type="submit" role="button" value="수정">
+            </div>
+        </div>
+        
+	</form>
+</div>
+	
+	
+  <footer style="margin-top: 50px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="about">
+            <div class="logo">
+              <img src="/assets/images/black-logo.png" alt="Plot Listing">
+            </div>
+            <p>부릉부릉은 <a rel="nofollow" href="https://templatemo.com/tm-564-plot-listing" target="_parent">공영주차장과 전기차 충전소</a> 정보를 제공하는<br> 사이트입니다. <a rel="nofollow" href="https://www.paypal.me/templatemo" target="_blank"> 이용해주셔서</a> 감사합니다.</p>
+          </div>
+        </div>
+       
+        <div class="col-lg-4">
+          <div class="contact-us">
+            <h4>Contact Us</h4>
+            <p>smile333@gmail.com</p>
+            <div class="row">
+              <div class="col-lg-6">
+                <a href="#">010-020-0340</a>
+              </div>
+              <div class="col-lg-6">
+                <a href="#">090-080-0760</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="sub-footer">
+            <p>Copyright © 2021 Plot Listing Co., Ltd. All Rights Reserved.
+            <br>
+			Design: <a rel="nofollow" href="https://templatemo.com" title="CSS Templates">TemplateMo</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+    
+    
+  <!-- Scripts -->
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/owl-carousel.js"></script>
+  <script src="/assets/js/animation.js"></script>
+  <script src="/assets/js/imagesloaded.js"></script>
+  <script src="/assets/js/custom.js"></script>
+  
+
+<script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script th:inline="javascript" th:src="@{/js/board.js}"></script>
+
+</body>
+</html>

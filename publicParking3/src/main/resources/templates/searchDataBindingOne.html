@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>공영주차장</title>
+
+</head>
+<body>
+	
+	
+	<table>
+		<thead>
+		 	<tr>
+		 		<th>주차장명</th>
+		 		<th>주소</th>
+		 		<th>폰번호</th>
+		 		<th>주차가능 차량수</th>
+		 		<th>비용유무</th>
+		 		<th>기본금액</th>
+		 		
+		 	</tr>
+	 	</thead>
+	 	<tbody>
+	 	
+			
+			<tr>
+				
+				<td th:text="${data.parkingName}"></td>
+				<td th:text="${data.parkingAddress}"></td>
+				<td th:text="${data.parkingPhone}"></td>
+				<td th:text="${data.parkingVehicles}"></td>
+				<td th:text="${data.parkingFree}"></td>
+				<td th:text="${data.parkingPrice}"></td>
+			</tr>
+			
+		</tbody>
+	</table>
+
+	
+</body>
+</html>
