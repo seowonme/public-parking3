@@ -12,7 +12,7 @@ server:
 spring:
     datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://minyoungdb.c9trnlmukdex.ap-northeast-2.rds.amazonaws.com/teamD
+        url: 
         username: admin
         password: 
     mvc:
@@ -28,7 +28,7 @@ spring:
       show-sql: true
       hibernate:
         format_sql: true
-        ddl-auto: create
+        ddl-auto: update
 
 mybatis:
   mapper-locations: classpath:teamD/publicParking/search/mapper/*.xml
