@@ -107,13 +107,13 @@ https://templatemo.com/tm-564-plot-listing
 					 	</tr>
 				 	</thead>
 				 	<tbody>
-						<tr th:each="parking : ${parkinglist}">
+						<tr th:each="parking : ${parkinglist}" th:onclick="">
 							<td th:text="${parking.parkingName}"></td>
 							<td th:text="${parking.parkingAddress}"></td>
-							<td th:text="${parking.parkingPhone}"></td>
+<!-- 							<td th:text="${parking.parkingPhone}"></td>
 							<td th:text="${parking.parkingVehicles}"></td>
 							<td th:text="${parking.parkingFree}"></td>
-							<td th:text="${parking.parkingPrice}"></td>
+							<td th:text="${parking.parkingPrice}"></td> -->
 						</tr>
 					</tbody>
 				</table>
