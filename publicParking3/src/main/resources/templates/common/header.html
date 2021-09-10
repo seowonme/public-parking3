@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -15,10 +15,11 @@
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
-              <li><a href="/">Home</a></li>
-              <li><a href="/board">Notice</a></li>
-              <li><a href="/mypage">my page</a></li>
-              <li><div class="main-white-button"><a href="/member/user/login"><i class="fa fa-plus"></i> login</a></div></li> 
+              <li><a th:href="@{/}">Home</a></li>
+              <li><a th:href="@{/board}">Notice</a></li>
+              <li><a th:href="@{/mypage}">my page</a></li>
+              <li><div class="main-white-button"><a sec:authorize="isAnonymous()" th:href="@{/member/user/login}"><i class="fa fa-plus"></i> login</a></div></li> 
+              <!-- <li><div class="main-white-button"><a sec:authorize="isAuthenticated()" th:href="@{/logout}"><i class="fa fa-plus"></i> logout</a></div></li>  -->
             </ul>        
             <a class='menu-trigger'>
                 <span>Menu</span>

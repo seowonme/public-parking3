@@ -36,20 +36,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 //				페이지 권한설정
 				.antMatchers("/admin/**").hasRole("ADMIN")
-				.antMatchers("/user/myinfo").hasRole("MEMBER")
+				.antMatchers("/member/user/myinfo").hasRole("MEMBER")
 				.antMatchers("/**").permitAll()
 			.and() // 로그인 설정
 				.formLogin()
-				.loginPage("/user/login")
+				.loginPage("/member/user/login")
 				.defaultSuccessUrl("/")
 				.permitAll()
 			.and() // 로그아웃 설정
 				.logout()
-				.logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
-				.logoutSuccessUrl("/user/logout/result")
+				.logoutRequestMatcher(new AntPathRequestMatcher("/memeber/user/logout"))
+				.logoutSuccessUrl("/member/user/logout/result")
 				.invalidateHttpSession(true)
             .and() // 403 예외처리 핸들링
-                .exceptionHandling().accessDeniedPage("/user/denied");
+                .exceptionHandling().accessDeniedPage("/member/user/denied");
 				
 	}
 	

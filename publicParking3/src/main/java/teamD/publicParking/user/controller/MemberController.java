@@ -1,6 +1,7 @@
 package teamD.publicParking.user.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,21 +24,21 @@ public class MemberController {
 	
 //	회원가입
 	@GetMapping("/user/signup") 
-	public String dispSignup() {
+	public String signupForm(Model model) {
 		return "/signup";
 	}
 	
     // 회원가입 처리
     @PostMapping("/user/signup")
-    public String execSignup(MemberDto memberDto) {
-        memberService.joinUser(memberDto);
-
+    public String signup(MemberDto memberDto) {
+    	memberService.signUp(memberDto);
+    	
         return "redirect:/member/user/login";
     }
 
     // 로그인 페이지
     @GetMapping("/user/login")
-    public String dispLogin() {
+    public String login() {
         return "/login";
     }
 

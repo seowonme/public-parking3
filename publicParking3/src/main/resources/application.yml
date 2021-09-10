@@ -12,9 +12,9 @@ server:
 spring:
     datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: 
+        url: jdbc:mysql://minyoungdb.c9trnlmukdex.ap-northeast-2.rds.amazonaws.com/test
         username: admin
-        password: 
+        password: yony9796
     mvc:
         hiddenmethod:
             filter:

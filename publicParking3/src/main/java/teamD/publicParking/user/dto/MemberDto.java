@@ -1,17 +1,13 @@
 package teamD.publicParking.user.dto;
 
-import java.time.LocalDateTime;
-
 import teamD.publicParking.user.domain.entity.Member;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 public class MemberDto {
 
@@ -22,7 +18,7 @@ public class MemberDto {
 	
 	public Member toEntity() {
 		return Member.builder()
-                .user_id(user_id)
+
                 .email(email)
                 .password(password)
                 .nickname(nickname)
